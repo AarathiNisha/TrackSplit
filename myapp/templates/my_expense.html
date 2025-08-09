@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-3">
+    <h3 class="mb-5 text-center">Group expenses</h3>
+    {% for exp in expenses %}
+    <div class="d-flex justify-content-center">
+        <div class="card shadow mb-4 w-75">
+            <div class="card-header bg-primary">
+                <h4>{{ exp.name }}</h4>
+            </div>
+            <div class="card-body">
+                <p><strong>Description:</strong> {{ exp.description }}</p>
+                <p><strong>Amount Due:</strong> {{exp.amount}}</p>
+                <p><strong>Owed By:</strong> {{ exp.user }}</p>
+                <p><strong>Owed at:</strong> {{exp.date}}</p>
+                <p><strong>Category:</strong> {{exp.category}}</p>
+                <a href="{% url 'edit_expense' exp.id %}"><button class="btn btn-success">Edit</button></a>
+                <a href="{% url 'delete_expense' exp.id %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <p>No circles created yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

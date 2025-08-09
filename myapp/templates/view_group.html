@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-2">
+    <div class="text-center mb-4">
+        <h2 class="text-primary">Group: {{ circle.name }}</h2>
+        <p class="text-muted"><strong>Description:</strong> {{ circle.description }}</p>
+        <p><strong>Created By:</strong> {{ circle.created_by.username }}</p>
+    </div>
+
+
+    <h4 class="mb-3 text-success">Members</h4>
+    <div class="row">
+        {% for member in members %}
+            <div class="col-md-4">
+                <div class="card border-success">
+                    <div class="card-body bg-light">
+                        <h5 class="card-title text-dark">{{ member.username }}</h5>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-warning">No members in this circle.</div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <h4 class="mb-3 text-danger">Expenses</h4>
+    <div class="row">
+        {% for expense in expenses %}
+            <div class="col-md-6">
+                <div class="card border-danger mb-3">
+                    <div class="card-body bg-white">
+                        <h5 class="card-title">{{ expense.description }}</h5>
+                        <p class="card-text">
+                            ₹{{ expense.amount }} <br>
+                            <strong>By:</strong> {{ expense.user }} <br>
+                            <strong>On:</strong> {{ expense.date }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">No expenses in this circle.</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'mycircles' %}" class="btn btn-outline-primary">← Back to My Circles</a>
+    </div>
+</div>
+{% endblock %}

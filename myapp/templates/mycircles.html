@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-2">
+    <h3 class="mb-4 text-center">Your Circles</h3>
+    {% for circle in circles %}
+        <div class="d-flex justify-content-center">
+        <div class="card shadow mb-4 w-75">
+            <div class="card-header" style="background:#58C9B9">
+                <h5>{{ circle.name }}</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Description:</strong> {{ circle.description }}</p>
+                <p><strong>Created By:</strong> {{ circle.created_by.username }}</p>
+                <a href="{% url 'add_member' circle.id %}"><button class="btn btn-info btn-sm px-3 mb-3">Add members</button></a>
+                <a href="{% url 'add_expense' circle.id %}"><button class="btn btn-primary btn-sm px-3 mb-3">Add Expense</button></a>
+                <a href="{% url 'view_group' circle.id %}"><button class="btn btn-secondary btn-sm px-3 mb-3">View Group</button></a>
+                <a href="{% url 'delete_circle' circle.id %}"><button class="btn btn-danger btn-sm px-3 mb-3">Delete</button></a>
+            </div>
+        </div>
+            </div>
+    {% empty %}
+        <p>No circles created yet.</p>
+    {% endfor %}
+    <div class="d-flex justify-content-center">
+    </div>
+</div>
+{% endblock %}

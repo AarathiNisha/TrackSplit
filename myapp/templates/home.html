@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+      {% block content %}
+      <div id="div2" class="container-fluid">
+        <h3>Hey, {{user.username}}! Ready to join?</h3>
+      </div>
+      <div class="row mt-3 mx-4">
+      <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+      <div class="card mt-4" style="background:#4DD0E1">
+          <i class="ri-lightbulb-line"></i>
+          <div class="card-body">
+          <h5 class="card-title">Today Motivation</h5>
+              <p class="card-text">{{ quote_obj }}</p>
+          </div>
+      </div>
+      </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+          <div class="card mt-4" style="background:#6BBBF7">
+          <i class="ri-group-line ri-icon"></i>
+          <div class="card-body">
+          <h5 class="card-title">{{ joined_count }}</h5>
+          <p class="card-text">Groups joined</p>
+          </div>
+         </div>
+          </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+      <div class="card mt-4" style="background:#C5A9F3">
+        <i class="ri-money-dollar-circle-line ri-icon"></i>
+        <div class="card-body">
+          <h5 class="card-title">{{ total_expenses }}</h5>
+          <p class="card-text">Pending settlements</p>
+        </div>
+      </div>
+       </div>
+      </div>
+      <div class="row mt-3 mx-4">
+      <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+       <div class="card mt-4" style="background:#FF8A65">
+          <i class="ri-wallet-line ri-icon"></i>
+          <div class="card-body">
+          <h5 class="card-title">{{ total_amount }}</h5>
+          <p class="card-text">Total Amount</p>
+          </div>
+      </div>
+      </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+          <div class="card mt-4" style="background:#58C9B9;">
+          <i class="ri-team-line ri-icon"></i>
+          <div class="card-body">
+           <h5 class="card-title">Lowest Amount</h5>
+              <p class="card-text">{{ lowest_amount }}</p>
+          </div>
+         </div>
+          </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+      <div class="card mt-4" style="background:#B49BFF">
+        <i class="ri-exchange-dollar-line ri-icon"></i>
+        <div class="card-body">
+             <h5 class="card-title">Highest Amount</h5>
+              <p class="card-text">{{ highest_amount }}</p>
+        </div>
+      </div>
+       </div>
+       <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+      <div class="card mt-4" style="background:#7BDFF2">
+        <i class="ri-pie-chart-line ri-icon"></i>
+        <div class="card-body">
+          <h5 class="card-title">Last Expense Added on</h5>
+            <p class="card-text">{{ recent_date }}</p>
+        </div>
+      </div>
+      </div>
+      </div>
+       <div class="d-flex justify-content-center mt-5">
+       <a href="{% url 'newcircle' %}" class="btn btn-primary">Create New Circle</a>
+       </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   {% endblock %}

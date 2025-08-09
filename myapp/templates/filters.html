@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="mb-4">Where My Money Goes</h2>
+
+<form method="get" class="mb-4">
+    <label><strong>Filter by Category:</strong></label>
+    <select name="category" class="form-select d-inline-block w-auto mx-2">
+        <option value="">All</option>
+        {% for cat in categories %}
+            <option value="{{ cat.id }}" {% if request.GET.category == cat.id|stringformat:"s" %}selected{% endif %}>
+                {{ cat.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<h4 class="mb-4">Total Spent: ₹{{ total_amount }}</h4>
+
+<div class="row">
+    {% for expense in expenses %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body card border-primary">
+                    <h5 class="card-title">₹{{ expense.amount }}</h5>
+                    <p class="card-text">{{ expense.description }}</p>
+                    <p class="mb-1">Category: {{ expense.category.name }}</p>
+                    <p>Date: {{ expense.date }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No expenses found.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

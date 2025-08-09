@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Hey, {{ user.username }}!</h2>
+
+        <div class="row g-4">
+            <!-- Total Expenses -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow" style="background:#4DD0E1">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Amount</h5>
+                        <p class="card-text fs-3">₹{{ total_amount }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number of Entries -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow" style="background:#C5A9F3">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Expenses</h5>
+                        <p class="card-text fs-3">{{ total_expenses }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Count -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow" style="background:#58C9B9;">
+                    <div class="card-body">
+                        <h5 class="card-title">Categories</h5>
+                        <p class="card-text fs-3">{{ category_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional: Recent Expenses Table -->
+        {% if recent_expenses %}
+        <div class="mt-5">
+            <h4>Recent Expenses</h4>
+            <table class="table table-striped table-bordered mt-3" style="border: 3px solid green">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expense in recent_expenses %}
+                    <tr>
+                        <td>{{ expense.date }}</td>
+                        <td>{{ expense.category.name }}</td>
+                        <td>₹{{ expense.amount }}</td>
+                        <td>{{ expense.description }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

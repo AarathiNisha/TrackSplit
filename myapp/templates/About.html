@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body class="bg-light">
+    <div class="container">
+        <div class="card shadow-lg rounded mt-5">
+            <div class="card-body mt-4">
+                <h4 class="card-title text-center mb-4 text-primary">About This App</h4>
+
+                <h5 class="text-muted">
+                    This Expense Tracker is a simple web application that helps you manage your personal finances efficiently.
+                    You can add, view, filter, and delete your expenses by category, and keep track of your total spending.
+                </h5>
+
+                <h5 class="mt-4">Key Features:</h5>
+                <ul>
+                    <li>Add and manage daily expenses with categories</li>
+                    <li>Filter by category and track total amounts</li>
+                    <li>User login/logout for data privacy</li>
+                </ul>
+
+                <h5 class="mt-4">Purpose:</h5>
+                <p>
+                    This app was created to help users gain better visibility into their spending habits and take control of their financial goals.
+                </p>
+
+                <h5 class="mt-4">Developed By:</h5>
+                <p>Aarathi Nisha</p>
+
+                <h5 class="mt-4">Contact:</h5>
+                <ul class="list-unstyled">
+                    <li><strong>Email:</strong> itzaara175@gmail.com</li>
+                    <li><strong>GitHub:</strong> <a href="https://github.com/AarathiNisha" target="_blank">github.com/AarathiNisha</a></li>
+                    <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/iamaara" target="_blank">linkedin.com/in/iamaara</a></li>
+                </ul>
+
+                <div class="text-center mt-5">
+                    <a href="{% url 'home' %}" class="btn btn-primary">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
